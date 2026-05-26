@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ContentFlow Agency — Content That Grows Your Business</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --ink2: #4a4843;
+    --ink3: #9a9690;
+    --paper: #faf9f6;
+    --paper2: #f0ede6;
+    --paper3: #e4e0d8;
+    --gold: #b8860b;
+    --gold-light: #f5e9c8;
+    --green: #1a6b3c;
+    --green-light: #e4f0ea;
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--paper3);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: var(--ink);
+    text-decoration: none; letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: var(--paper);
+    border: none; border-radius: var(--radius);
+    padding: 8px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    max-width: 900px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--green);
+    background: var(--green-light);
+    padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 1.75rem; letter-spacing: 0.03em;
+  }
+  .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.1; letter-spacing: -1px;
+    color: var(--ink); margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+  .hero h1 em { font-style: italic; color: var(--ink2); }
+  .hero-sub {
+    font-size: 17px; color: var(--ink2);
+    max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-main {
+    background: var(--ink); color: var(--paper);
+    padding: 13px 28px; border-radius: var(--radius);
+    font-size: 14px; font-family: 'DM Sans', sans-serif;
+    font-weight: 500; text-decoration: none;
+    transition: opacity 0.2s; display: inline-block;
+  }
+  .btn-main:hover { opacity: 0.85; }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    padding: 13px 28px; border-radius: var(--radius);
+    border: 1px solid var(--paper3);
+    font-size: 14px; font-family: 'DM Sans', sans-serif;
+    text-decoration: none; transition: background 0.2s; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--paper2); }
+
+  /* STATS BAR */
+  .stats-bar {
+    border-top: 1px solid var(--paper3);
+    border-bottom: 1px solid var(--paper3);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-item {
+    padding: 1.75rem 2rem;
+    border-right: 1px solid var(--paper3);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px; color: var(--ink); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--ink3); }
+
+  /* SECTION COMMON */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink3); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::after {
+    content: ''; flex: 1; max-width: 40px;
+    height: 1px; background: var(--paper3);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    line-height: 1.2; letter-spacing: -0.5px;
+    color: var(--ink); margin-bottom: 0.75rem;
+  }
+  .section-sub {
+    font-size: 15px; color: var(--ink2);
+    max-width: 480px; font-weight: 300; margin-bottom: 3rem;
+  }
+
+  /* SERVICES */
+  .services-bg { background: var(--paper2); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px; background: var(--paper3);
+    border: 1px solid var(--paper3);
+    border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .service-card {
+    background: var(--paper2); padding: 2rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--paper); }
+  .service-icon {
+    width: 42px; height: 42px;
+    background: var(--paper); border: 1px solid var(--paper3);
+    border-radius: var(--radius); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 1.25rem; color: var(--ink2);
+  }
+  .service-name {
+    font-size: 15px; font-weight: 500; color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .service-desc {
+    font-size: 13px; color: var(--ink2); line-height: 1.6;
+    margin-bottom: 1.25rem; font-weight: 300;
+  }
+  .service-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--ink); margin-bottom: 4px;
+  }
+  .service-cycle { font-size: 11px; color: var(--ink3); margin-bottom: 1.25rem; }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .service-features li {
+    font-size: 12px; color: var(--ink2);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .service-features li::before {
+    content: '✓'; color: var(--green);
+    font-weight: 500; font-size: 12px;
+  }
+
+  /* PRICING HIGHLIGHT */
+  .pricing-section { background: var(--ink); }
+  .pricing-section .section-eyebrow { color: #6a6760; }
+  .pricing-section .section-eyebrow::after { background: #2a2928; }
+  .pricing-section .section-title { color: var(--paper); }
+  .pricing-section .section-sub { color: #9a9690; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .price-card {
+    background: #1a1917; border: 1px solid #2a2928;
+    border-radius: var(--radius-lg); padding: 1.5rem;
+  }
+  .price-card.featured {
+    background: var(--paper2); border-color: var(--paper3);
+  }
+  .price-card-label {
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #6a6760; margin-bottom: 1rem;
+  }
+  .price-card.featured .price-card-label { color: var(--ink3); }
+  .price-featured-badge {
+    display: inline-block; background: var(--gold-light);
+    color: var(--gold); font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; margin-bottom: 0.5rem;
+  }
+  .price-card-name {
+    font-size: 14px; font-weight: 500; color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .price-card.featured .price-card-name { color: var(--ink); }
+  .price-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: var(--paper); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-card.featured .price-amount { color: var(--ink); }
+  .price-per { font-size: 11px; color: #6a6760; margin-bottom: 1.25rem; }
+  .price-card.featured .price-per { color: var(--ink3); }
+  .price-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.5rem; }
+  .price-list li { font-size: 12px; color: #9a9690; display: flex; align-items: center; gap: 7px; }
+  .price-card.featured .price-list li { color: var(--ink2); }
+  .price-list li::before { content: '→'; color: #4a4843; font-size: 11px; }
+  .price-card.featured .price-list li::before { color: var(--green); content: '✓'; }
+  .price-btn {
+    width: 100%; padding: 10px; border-radius: var(--radius);
+    font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+    cursor: pointer; text-align: center; border: 1px solid #2a2928;
+    background: transparent; color: #9a9690; transition: all 0.2s;
+    text-decoration: none; display: block;
+  }
+  .price-btn:hover { border-color: #4a4843; color: var(--paper); }
+  .price-card.featured .price-btn {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  .price-card.featured .price-btn:hover { opacity: 0.85; }
+
+  /* SAMPLES */
+  .samples-list { display: flex; flex-direction: column; gap: 1px; background: var(--paper3); border: 1px solid var(--paper3); border-radius: var(--radius-lg); overflow: hidden; }
+  .sample-row {
+    background: var(--paper); padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    transition: background 0.15s;
+  }
+  .sample-row:hover { background: var(--paper2); }
+  .sample-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; color: var(--paper3); min-width: 28px;
+  }
+  .sample-info { flex: 1; }
+  .sample-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .sample-meta { font-size: 12px; color: var(--ink3); }
+  .sample-chip {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .chip-blog { background: var(--green-light); color: var(--green); }
+  .chip-social { background: #e8f0fb; color: #1a4a8b; }
+  .chip-strategy { background: var(--gold-light); color: var(--gold); }
+
+  /* PROCESS */
+  .process-bg { background: var(--paper2); }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0; border: 1px solid var(--paper3); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .process-step {
+    padding: 2rem 1.5rem; background: var(--paper2);
+    border-right: 1px solid var(--paper3);
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+  .step-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px; color: var(--paper3);
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 12px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { font-size: 15px; color: var(--ink2); line-height: 1.8; margin-bottom: 1rem; font-weight: 300; }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-aside { display: flex; flex-direction: column; gap: 12px; }
+  .aside-card {
+    background: var(--paper2); border: 1px solid var(--paper3);
+    border-radius: var(--radius-lg); padding: 1.25rem;
+  }
+  .aside-card-label { font-size: 11px; color: var(--ink3); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+  .aside-card-value { font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  /* CONTACT */
+  .contact-bg { background: var(--ink); }
+  .contact-bg .section-eyebrow { color: #6a6760; }
+  .contact-bg .section-eyebrow::after { background: #2a2928; }
+  .contact-bg .section-title { color: var(--paper); }
+  .contact-bg .section-sub { color: #9a9690; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-items { display: flex; flex-direction: column; gap: 12px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 1rem 1.25rem; background: #1a1917;
+    border: 1px solid #2a2928; border-radius: var(--radius-lg);
+  }
+  .contact-icon {
+    width: 36px; height: 36px; background: #252422;
+    border-radius: var(--radius); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 16px; color: #9a9690;
+  }
+  .contact-label { font-size: 11px; color: #6a6760; margin-bottom: 2px; }
+  .contact-value { font-size: 13px; color: var(--paper); font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 12px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label { font-size: 12px; color: #9a9690; }
+  .form-field input, .form-field textarea, .form-field select {
+    background: #1a1917; border: 1px solid #2a2928;
+    border-radius: var(--radius); padding: 10px 14px;
+    font-size: 13px; color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    outline: none; transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: #4a4843; }
+  .form-field select option { background: #1a1917; }
+  .form-submit {
+    background: var(--paper); color: var(--ink);
+    border: none; border-radius: var(--radius);
+    padding: 12px; font-size: 14px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .form-submit:hover { opacity: 0.9; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid #2a2928; background: var(--ink);
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: var(--paper);
+  }
+  .footer-copy { font-size: 12px; color: #4a4843; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-tag { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.5s 0.3s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--paper3); }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">ContentFlow Agency</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#samples">Samples</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get free sample →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag"><span></span> Available for new projects</div>
+  <h1>Content that ranks,<br><em>engages,</em> and converts</h1>
+  <p class="hero-sub">I help small businesses and startups grow online through SEO blog writing, social media content, and AI-powered content strategy — delivered in fluent English, on time.</p>
+  <div class="hero-actions">
+    <a class="btn-main" href="#contact">Work with me →</a>
+    <a class="btn-ghost" href="#samples">View sample work</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Core services</div></div>
+  <div class="stat-item"><div class="stat-num">48hr</div><div class="stat-label">Avg. turnaround</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Satisfaction rate</div></div>
+  <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label">First sample</div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow">What I offer</div>
+    <h2 class="section-title">Three services.<br>One goal — your growth.</h2>
+    <p class="section-sub">Pick what you need or bundle all three for a complete content solution.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <div class="service-name">SEO Blog Writing</div>
+        <p class="service-desc">Long-form articles (1,000–2,000 words) optimized to rank on Google and bring consistent organic traffic to your website.</p>
+        <div class="service-price">$50</div>
+        <div class="service-cycle">per article</div>
+        <ul class="service-features">
+          <li>Keyword research included</li>
+          <li>SEO-optimized headings & meta</li>
+          <li>Delivered in 3–5 business days</li>
+          <li>Unlimited revisions</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <div class="service-name">Social Media Content</div>
+        <p class="service-desc">Monthly packs of engaging captions, hashtags, and post ideas tailored for Instagram, LinkedIn, or Facebook.</p>
+        <div class="service-price">$100</div>
+        <div class="service-cycle">per month</div>
+        <ul class="service-features">
+          <li>15–30 posts per month</li>
+          <li>Platform-specific copy</li>
+          <li>Hashtag strategy included</li>
+          <li>Monthly content calendar</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <div class="service-name">AI Content Strategy</div>
+        <p class="service-desc">A full 30-day content plan with keyword research, blog topics, social post ideas, and email campaign concepts.</p>
+        <div class="service-price">$150</div>
+        <div class="service-cycle">per month</div>
+        <ul class="service-features">
+          <li>In-depth keyword research</li>
+          <li>Blog + social + email plan</li>
+          <li>30-day content calendar</li>
+          <li>Niche-specific strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing.</h2>
+    <p class="section-sub">No hidden fees. No contracts. Cancel anytime. First sample is always free.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-card-label">Starter</div>
+        <div class="price-card-name">SEO Blog</div>
+        <div class="price-amount">$50</div>
+        <div class="price-per">per article</div>
+        <ul class="price-list">
+          <li>1,000–2,000 words</li>
+          <li>Keyword research</li>
+          <li>SEO formatting</li>
+          <li>Revisions included</li>
+        </ul>
+        <a class="price-btn" href="#contact">Get started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-featured-badge">★ Most popular</div>
+        <div class="price-card-label">Growth</div>
+        <div class="price-card-name">Social Media Pack</div>
+        <div class="price-amount">$100</div>
+        <div class="price-per">per month</div>
+        <ul class="price-list">
+          <li>15–30 posts/month</li>
+          <li>All platforms covered</li>
+          <li>Hashtag strategy</li>
+          <li>Content calendar</li>
+        </ul>
+        <a class="price-btn" href="#contact">Get started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Strategy</div>
+        <div class="price-card-name">AI Content Plan</div>
+        <div class="price-amount">$150</div>
+        <div class="price-per">per month</div>
+        <ul class="price-list">
+          <li>Full 30-day roadmap</li>
+          <li>Keyword research</li>
+          <li>Blog + social + email</li>
+          <li>Niche-specific</li>
+        </ul>
+        <a class="price-btn" href="#contact">Get started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">All-in-one</div>
+        <div class="price-card-name">Full Package</div>
+        <div class="price-amount">$400</div>
+        <div class="price-per">per month</div>
+        <ul class="price-list">
+          <li>All 3 services bundled</li>
+          <li>Priority delivery</li>
+          <li>Monthly strategy call</li>
+          <li>Best value — save 20%</li>
+        </ul>
+        <a class="price-btn" href="#contact">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLES -->
+<section id="samples">
+  <div class="section-inner">
+    <div class="section-eyebrow">Sample work</div>
+    <h2 class="section-title">See the quality<br>before you commit.</h2>
+    <p class="section-sub">Real samples across all three services. Every client gets a free custom sample before paying.</p>
+    <div class="samples-list">
+      <div class="sample-row">
+        <div class="sample-num">01</div>
+        <div class="sample-info">
+          <div class="sample-title">10 best productivity tools for remote teams in 2026</div>
+          <div class="sample-meta">1,800 words · SaaS niche · targets "productivity tools for remote work"</div>
+        </div>
+        <span class="sample-chip chip-blog">SEO Blog</span>
+      </div>
+      <div class="sample-row">
+        <div class="sample-num">02</div>
+        <div class="sample-info">
+          <div class="sample-title">30-day content strategy — fitness eCommerce brand</div>
+          <div class="sample-meta">4 blog topics · 12 social posts · 2 email campaigns · keyword map</div>
+        </div>
+        <span class="sample-chip chip-strategy">AI Strategy</span>
+      </div>
+      <div class="sample-row">
+        <div class="sample-num">03</div>
+        <div class="sample-info">
+          <div class="sample-title">7-day Instagram content pack — coffee shop brand</div>
+          <div class="sample-meta">7 captions · hashtag sets · posting schedule · engagement hooks</div>
+        </div>
+        <span class="sample-chip chip-social">Social Media</span>
+      </div>
+      <div class="sample-row">
+        <div class="sample-num">04</div>
+        <div class="sample-info">
+          <div class="sample-title">How to start a Shopify store in 7 steps — beginner's guide</div>
+          <div class="sample-meta">1,500 words · eCommerce niche · targets "how to start Shopify store"</div>
+        </div>
+        <span class="sample-chip chip-blog">SEO Blog</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">From first message<br>to published content.</h2>
+    <p class="section-sub">A simple four-step process designed so you can focus on your business.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-title">Tell me your goals</div>
+        <p class="step-desc">Share your website, niche, and what you want to achieve — more traffic, more followers, or a content roadmap.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-title">Receive a free sample</div>
+        <p class="step-desc">I deliver one free piece of content so you can judge quality before spending a single dollar.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-title">Choose your plan</div>
+        <p class="step-desc">Pick the service that fits your needs and budget. No contracts, no lock-in, cancel anytime.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <div class="step-title">Content delivered</div>
+        <p class="step-desc">Review, approve, and publish. I handle all research, writing, and formatting — you just go live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title" style="margin-bottom:1.5rem;">Content writer.<br>Growth partner.</h2>
+        <p>I'm a content strategist and writer who helps <strong>small businesses and startups grow online</strong> through high-quality English content — blogs, social media, and strategy.</p>
+        <p>I use the latest AI tools to research, plan, and produce content faster than traditional agencies, which means <strong>quicker turnaround and lower prices</strong> without compromising quality.</p>
+        <p>Every piece I write is <strong>original, well-researched, and optimized</strong> for the platform it's published on. My goal is simple: your content should work for you 24/7, even when you're not online.</p>
+      </div>
+      <div class="about-aside">
+        <div class="aside-card">
+          <div class="aside-card-label">Location</div>
+          <div class="aside-card-value">India · Available globally</div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-label">Languages</div>
+          <div class="aside-card-value">English (fluent), Telugu</div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-label">Niches covered</div>
+          <div class="aside-card-value">SaaS, eCommerce, Health, Finance, Lifestyle, Tech</div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-label">Payment accepted</div>
+          <div class="aside-card-value">Wise, Payoneer, PayPal, Crypto</div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-label">Availability</div>
+          <div class="aside-card-value" style="color: var(--green);">● Open for new clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Let's work together.</h2>
+    <p class="section-sub">Send a message and I'll reply within 24 hours. First sample is free — no commitment needed.</p>
+    <div class="contact-grid">
+      <div class="contact-items">
+        <div class="contact-row">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">your@email.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+91 your number</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">in</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/yourname</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">⏱</div>
+          <div>
+            <div class="contact-label">Response time</div>
+            <div class="contact-value">Within 24 hours</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-field">
+          <label>Your name</label>
+          <input type="text" placeholder="John Smith">
+        </div>
+        <div class="form-field">
+          <label>Email address</label>
+          <input type="email" placeholder="john@company.com">
+        </div>
+        <div class="form-field">
+          <label>Service you're interested in</label>
+          <select>
+            <option>SEO blog writing</option>
+            <option>Social media content</option>
+            <option>AI content strategy</option>
+            <option>Full package</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Tell me about your business</label>
+          <textarea rows="4" placeholder="What do you sell? Who's your audience? What content goal do you have?"></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Thanks! I\'ll reply within 24 hours.')">Send message — it\'s free →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">ContentFlow Agency</span>
+  <span class="footer-copy">© 2026 · Built with care · Available worldwide</span>
+</footer>
+
+</body>
+</html>
