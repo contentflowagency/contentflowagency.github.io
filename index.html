@@ -648,13 +648,7 @@
           </div>
         </div>
         
-        <div class="contact-row">
-          <div class="contact-icon">in</div>
-          <div>
-            <div class="contact-label">LinkedIn</div>
-            <div class="contact-value">linkedin.com/in/yourname</div>
-          </div>
-        </div>
+
         <div class="contact-row">
           <div class="contact-icon">⏱</div>
           <div>
@@ -663,18 +657,18 @@
           </div>
         </div>
       </div>
-      <div class="contact-form">
+      <form class="contact-form" action="https://formspree.io/f/mlgvpkky" method="POST">
         <div class="form-field">
           <label>Your name</label>
-          <input type="text" placeholder="John Smith">
+          <input type="text" name="name" placeholder="John Smith" required>
         </div>
         <div class="form-field">
           <label>Email address</label>
-          <input type="email" placeholder="john@company.com">
+          <input type="email" name="email" placeholder="john@company.com" required>
         </div>
         <div class="form-field">
           <label>Service you're interested in</label>
-          <select>
+          <select name="service">
             <option>SEO blog writing</option>
             <option>Social media content</option>
             <option>AI content strategy</option>
@@ -684,10 +678,10 @@
         </div>
         <div class="form-field">
           <label>Tell me about your business</label>
-          <textarea rows="4" placeholder="What do you sell? Who's your audience? What content goal do you have?"></textarea>
+          <textarea rows="4" name="message" placeholder="What do you sell? Who's your audience? What content goal do you have?"></textarea>
         </div>
-        <button class="form-submit" onclick="alert('Thanks! I\'ll reply within 24 hours.')">Send message — it\'s free →</button>
-      </div>
+        <button type="submit" class="form-submit">Send message — it's free →</button>
+      </form>
     </div>
   </div>
 </section>
